@@ -15,4 +15,5 @@ before_install:
 script:
   - ./configure && make && make runtest
   - make clean
+  - openssl version -a
   - ./configure --enable-openssl && make && make runtest

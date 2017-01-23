@@ -1,5 +1,6 @@
 sudo: false
 language: c
+osx_image: xcode8.2
 compiler:
   - clang
   - gcc

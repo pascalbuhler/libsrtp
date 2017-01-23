@@ -7,6 +7,11 @@ compiler:
 os:
   - linux
   - osx
+before_install:
+# OSX
+  - if [ $TRAVIS_OS_NAME == osx ]; then brew update;
+      brew install openssl && brew link --force openssl;
+    fi
 script:
   - ./configure && make && make runtest
   - make clean

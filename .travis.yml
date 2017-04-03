@@ -18,6 +18,6 @@ matrix:
 before_script:
   - if [ $TRAVIS_OS_NAME == osx ]; then brew install ccache; fi
 script:
-  - ./configure $CONFIGURE_FLAGS
+  - EXTRA_CFLAGS=-Werror ./configure $CONFIGURE_FLAGS
   - make
   - make runtest

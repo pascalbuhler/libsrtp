@@ -2,6 +2,7 @@ sudo: false
 language: c
 cache: ccache
 osx_image: xcode8.2
+dist: precise
 compiler:
   - clang
   - gcc

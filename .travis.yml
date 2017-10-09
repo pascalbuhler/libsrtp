@@ -8,6 +8,10 @@ compiler:
   - gcc
 os:
   - linux
+    addons:
+      apt:
+        packages:
+          - clang-format-3.9
   - osx
 env:
   - CONFIGURE_FLAGS=

@@ -3,6 +3,8 @@
 # format.sh
 #
 # run clang-format on each .c & .h file
+#
+# assumes git tree is clean when reporting status
 
 if [ -z "${CLANG_FORMAT}" ]; then
     CLANG_FORMAT=clang-format
@@ -17,15 +19,17 @@ done
 
 m=`git ls-files -m`
 if [ -n "$m" ]; then
-    echo "Fromatting required when running clang-format version:"
-    $CLANG_FORMAT -version
+    v=`$CLANG_FORMAT -version`
+    echo "Fromatting required when checking with $v"
     echo
-    echo "The following files needed formatting:"
+    echo "The following files required formatting:"
     for f in $m; do
         echo $f
     done
-    echo
-    git diff
+    if [ "$1" = "-d" ]; then
+        echo
+        git diff
+    fi
     exit 1
 fi
 exit 0

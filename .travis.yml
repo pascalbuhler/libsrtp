@@ -22,7 +22,7 @@ matrix:
       env: CONFIGURE_FLAGS=--enable-openssl
 before_script:
   - if [ $TRAVIS_OS_NAME == osx ]; then brew install ccache; fi
-  - ./format.sh
+  - if [ $TRAVIS_OS_NAME == linux ]; then ./format.sh -d; fi
 script:
   - ./configure $CONFIGURE_FLAGS
   - make

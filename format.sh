@@ -17,7 +17,10 @@ done
 
 m=`git ls-files -m`
 if [ -n "$m" ]; then
-    echo "The following files needed formating:"
+    echo "Fromatting required when running clang-format version:"
+    $CLANG_FORMAT -version
+    echo
+    echo "The following files needed formatting:"
     for f in $m; do
         echo $f
     done

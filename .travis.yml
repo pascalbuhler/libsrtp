@@ -6,8 +6,7 @@ osx_image: xcode8.2
 addons:
   apt:
     packages:
-      - clang-format
-
+      - clang-format-3.9
 compiler:
   - clang
   - gcc

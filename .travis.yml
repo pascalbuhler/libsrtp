@@ -6,7 +6,7 @@ osx_image: xcode8.2
 addons:
   apt:
     packages:
-      - clang-format-3.9
+      - clang-format
 
 compiler:
   - clang
@@ -23,8 +23,8 @@ matrix:
       env: CONFIGURE_FLAGS=--enable-openssl
 before_script:
   - if [ $TRAVIS_OS_NAME == osx ]; then brew install ccache; fi
-script:
   - ./format.sh
+script:
   - ./configure $CONFIGURE_FLAGS
   - make
   - make runtest

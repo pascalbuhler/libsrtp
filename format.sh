@@ -8,7 +8,7 @@ if [ -z "${CLANG_FORMAT}" ]; then
     CLANG_FORMAT=clang-format
 fi
 
-a=`git ls-files *.h *.c`
+a=`git ls-files '*.h' '*.c'`
 for x in $a; do
     if [ $x != "config_in.h" ]; then
         $CLANG_FORMAT -i -style=file $x
@@ -21,6 +21,8 @@ if [ -n "$m" ]; then
     for f in $m; do
         echo $f
     done
+    echo
+    git diff
     exit 1
 fi
 exit 0

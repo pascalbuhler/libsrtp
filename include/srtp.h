@@ -48,7 +48,7 @@
 #include <stdint.h>
 
 #ifdef __cplusplus
-        extern "C" {
+extern "C" {
 #endif
 
 /**
@@ -64,7 +64,7 @@
  * SRTP_MASTER_KEY_LEN is the nominal master key length supported by libSRTP
  */
 
-#define SRTP_MASTER_KEY_LEN                                                            30
+#define SRTP_MASTER_KEY_LEN 30
 
 /*
  * SRTP_MAX_KEY_LEN is the maximum key length supported by libSRTP

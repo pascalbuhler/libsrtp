@@ -16,6 +16,9 @@ os:
 env:
   - CONFIGURE_FLAGS=
   - CONFIGURE_FLAGS=--enable-openssl
+dependencies:
+  pre:
+    - if [ $TRAVIS_OS_NAME == osx ]; then brew update; fi
 matrix:
   exclude:
     - os: osx

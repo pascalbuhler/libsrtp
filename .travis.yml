@@ -20,12 +20,31 @@ matrix:
     - os: linux
       env:
         - TEST="linux clang"
-        - CC=clang
       addons:
         apt:
           packages:
             - clang
       script:
-        - ./configure
+        - CC=clang ./configure
         - make
         - make runtest
+    - os: linux
+       env:
+        - TEST="linux clang (openssl)"
+       addons:
+         apt:
+           packages:
+             - clang
+       script:
+         - CC=clang ./configure --enable-openssl
+         - make
+         - make runtest
+    - os: linux
+       env:
+         - TEST="clang-format"
+       addons:
+         apt:
+           packages:
+             - clang-format
+         script:
+           - ./format -d

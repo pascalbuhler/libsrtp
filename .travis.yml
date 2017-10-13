@@ -28,3 +28,12 @@ matrix:
         - CC=clang ./configure
         - make
         - make runtest
+    - os: linux
+      env:
+        - TEST="clang-format"
+      addons:
+        apt:
+          packages:
+            - clang-format
+      script:
+        - ./format -d

@@ -8,7 +8,8 @@ env:
 
 matrix:
   include:
-    # Default build with gcc
+
+    # default linux build with gcc
     - os: linux
       env:
         - TEST="linux gcc (dissabled openssl)"
@@ -22,6 +23,8 @@ matrix:
         - ./configure
         - make
         - make runtest
+
+    # linux build with openssl and gcc
     - os: linux
       env:
         - TEST="linux gcc"
@@ -35,6 +38,8 @@ matrix:
         - ./configure --enable-openssl
         - make
         - make runtest
+
+    # linux build with openssl and clang
     - os: linux
       env:
         - TEST="linux clang"
@@ -46,6 +51,8 @@ matrix:
         - CC=clang ./configure --enable-openssl
         - make
         - make runtest
+
+    # default osx build with xcode (clang)
     - os: osx
       env:
         - TEST="osx XCode 8.2 (dissabled openssl)"
@@ -54,6 +61,8 @@ matrix:
         - ./configure
         - make
         - make runtest
+
+    # code format check
     - os: linux
       env:
         - TEST="clang-format"
@@ -63,9 +72,11 @@ matrix:
             - clang-format-3.9
       script:
         - ./format.sh -d
+
+    # coverity scan
     - os: linux
       env:
-        - TEST="Coverity Scan"
+        - TEST="coverity scan"
       addons:
         apt:
           sources:
@@ -82,4 +93,3 @@ matrix:
             branch_pattern: master
       script:
         - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
-

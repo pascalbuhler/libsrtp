@@ -3,28 +3,17 @@ sudo: false
 language: c
 cache: ccache
 osx_image: xcode8.2
-addons:
-  apt:
-    packages:
-      - clang-format-3.9
-compiler:
-  - clang
-  - gcc
-os:
-  - linux
-  - osx
-env:
-  - CONFIGURE_FLAGS=
-  - CONFIGURE_FLAGS=--enable-openssl
+
+
 matrix:
-  exclude:
-    - os: osx
-      env: CONFIGURE_FLAGS=--enable-openssl
-before_script:
-  - if [ $TRAVIS_OS_NAME == osx ]; then brew update; fi
-  - if [ $TRAVIS_OS_NAME == osx ]; then brew install ccache; fi
-  - if [ $TRAVIS_OS_NAME == linux ]; then ./format.sh -d; fi
-script:
-  - ./configure $CONFIGURE_FLAGS
-  - make
-  - make runtest
+- include
+
+  - os: linux
+    env:
+      - TEST="linux gcc"
+    compiler:
+      - gcc
+    script:
+      - ./configure
+      - make
+      - make runtest

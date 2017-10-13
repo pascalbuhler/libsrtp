@@ -30,7 +30,7 @@ matrix:
         - make runtest
     - os: linux
        env:
-        - TEST="linux clang (openssl)"
+         - TEST="linux clang (openssl)"
        addons:
          apt:
            packages:

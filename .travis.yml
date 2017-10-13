@@ -1,9 +1,6 @@
 dist: trusty
 sudo: false
 language: c
-cache: ccache
-osx_image: xcode8.2
-
 
 matrix:
   include:
@@ -23,8 +20,10 @@ matrix:
     - os: linux
       env:
         - TEST="linux clang"
-      compiler:
-        - clang
+      addons:
+        apt:
+          packages:
+            - clang
       script:
         - ./configure
         - make

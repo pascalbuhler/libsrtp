@@ -6,7 +6,7 @@ matrix:
   include:
     - os: linux
       env:
-        - TEST="linux gcc (dissable openssl)"
+        - TEST="linux gcc (dissabled openssl)"
       addons:
         apt:
           sources:
@@ -39,6 +39,14 @@ matrix:
             - clang
       script:
         - CC=clang ./configure --enable-openssl
+        - make
+        - make runtest
+    - os: osx
+      env:
+        - TEST="osx XCode 8.2 (dissabled openssl)"
+      osx_image: xcode8.2
+      script:
+        - ./configure
         - make
         - make runtest
     - os: linux

@@ -20,6 +20,7 @@ matrix:
     - os: linux
       env:
         - TEST="linux clang"
+        - CC=clang
       addons:
         apt:
           packages:

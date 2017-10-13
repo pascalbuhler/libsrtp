@@ -8,6 +8,7 @@ env:
 
 matrix:
   include:
+    # Default build with gcc
     - os: linux
       env:
         - TEST="linux gcc (dissabled openssl)"

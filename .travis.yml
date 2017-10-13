@@ -34,6 +34,6 @@ matrix:
       addons:
         apt:
           packages:
-            - clang-format
+            - clang-format-3.9
       script:
         - ./format -d

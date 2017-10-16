@@ -83,6 +83,7 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - gcc-6
+            - valgrind
       script:
         - ./configure
         - make

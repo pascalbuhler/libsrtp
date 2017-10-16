@@ -6,6 +6,7 @@
 # targets:
 #
 # runtest       runs test applications
+# runtest-valgrind runs test applications with valgrind
 # test		builds test applications
 # libsrtp2.a	static library implementing srtp
 # libsrtp2.so	shared library implementing srtp
@@ -36,6 +37,11 @@ ifeq (1, $(USE_OPENSSL))
 endif
 	@echo "libsrtp2 test applications passed."
 	$(MAKE) -C crypto runtest
+
+runtest-valgrind: test
+	@echo "running libsrtp2 test applications... (valgrind)"
+	valgrind test/srtp_driver$(EXE) -v >/dev/null
+	@echo "libsrtp2 test applications passed. (valgrind)"
 
 # makefile variables
 

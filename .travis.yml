@@ -12,7 +12,7 @@ matrix:
     # default linux build with gcc
     - os: linux
       env:
-        - TEST="linux gcc (dissabled openssl)"
+        - TEST="linux gcc"
       addons:
         apt:
           sources:
@@ -27,7 +27,7 @@ matrix:
     # linux build with openssl and gcc
     - os: linux
       env:
-        - TEST="linux gcc"
+        - TEST="linux gcc (openssl)"
       addons:
         apt:
           sources:
@@ -42,7 +42,7 @@ matrix:
     # linux build with openssl and clang
     - os: linux
       env:
-        - TEST="linux clang"
+        - TEST="linux clang (openssl)"
       addons:
         apt:
           packages:
@@ -55,7 +55,7 @@ matrix:
     # default osx build with xcode (clang)
     - os: osx
       env:
-        - TEST="osx XCode 8.2 (dissabled openssl)"
+        - TEST="osx XCode 8.2"
       osx_image: xcode8.2
       script:
         - ./configure
@@ -73,23 +73,17 @@ matrix:
       script:
         - ./format.sh -d
 
-    # coverity scan
+    # valgrind
     - os: linux
       env:
-        - TEST="coverity scan"
+        - TEST="valgrind"
       addons:
         apt:
           sources:
             - ubuntu-toolchain-r-test
           packages:
             - gcc-6
-        coverity_scan:
-          project:
-            name: "pabuhler/libsrtp"
-            description: "Build submitted via Travis CI"
-            notification_email: pabuhler@cisco.com
-            build_command_prepend: "./configure"
-            build_command: "make"
-            branch_pattern: master
       script:
-        - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+        - ./configure
+        - make
+        - make runtest-valgrind

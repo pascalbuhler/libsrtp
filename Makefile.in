@@ -40,7 +40,7 @@ endif
 
 runtest-valgrind: test
 	@echo "running libsrtp2 test applications... (valgrind)"
-	valgrind test/srtp_driver$(EXE) -v >/dev/null
+	valgrind --error-exitcode=1 test/srtp_driver$(EXE) -v >/dev/null
 	@echo "libsrtp2 test applications passed. (valgrind)"
 
 # makefile variables

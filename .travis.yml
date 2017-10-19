@@ -95,18 +95,13 @@ matrix:
       env:
         - TEST="Coverity Scan"
       addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - gcc-6
-      coverity_scan:
-        project:
-          name: "pabuhler/libsrtp"
-          description: "Build submitted via Travis CI"
-          notification_email: pabuhler@cisco.com
-        build_command_prepend: ./configure
-        build_command: make
-        branch_pattern: master
+        coverity_scan:
+          project:
+            name: "pabuhler/libsrtp"
+            description: "Build submitted via Travis CI"
+            notification_email: pabuhler@cisco.com
+          build_command_prepend: ./configure
+          build_command: make
+          branch_pattern: master
       script:
         - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-

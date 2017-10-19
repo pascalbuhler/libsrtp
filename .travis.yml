@@ -2,6 +2,11 @@ dist: trusty
 sudo: false
 language: c
 
+env:
+  global:
+    secure: "lPgSXO0nXfOpQApyS0WUy4SJ+yjb7pFt2c99asKN9y4zo3vxDc+KHgc1GIO0aQld/itqWodmCeQ/+3rGKuJmF0z0rPx4pHFJSCVrZ2O+3M16MekYj5OFZkQntvJQsCGoKJxWLslPvNmXlNYhKRU+D3Jxkg7IgIA1qPPAJ9hxtuhPeFd5rU6srUmdiQxCXMia9b0Ee40xnAx+aPDGBEjljiSsCGdP4iGmb1MGdmWFd8hglrpMm3+bj3eJBUsJIU+v0619AYOweo/3VnCo7hN5klI0y9wdNzVHaESWCT9sMW+nIGlIAjqwFsEjJDsRcwEOoLjCetp2rBNiF4ovxfkPIb2HZFJiHVD/0HZOoELwSLsIHK0QjXXGvocAUG4HK6UhYtlly/EBBbMGjARUSwpfqPzGNTDpm28n/Er9dhxn5o5uQa2XocJC1qpA6XQmMpoC73f6VjTfSUcfNbQ8MzQguaEuLx3OKzgj9GT9AQrVDp/4rD16iGeh2Bqk6pR+7meDoXBckW0i89WPbqvLu2n0rnIaI+M6tvPCLql6/Pn2dBagEezu/NXOJcGNWEgpOB7Rk7ZXRatqOiRG5uJYWVD4sSiLa6mxV+qTuNTNKozOQmp1eGv2P+Bx9aIrYKjnj78oJNgvvyaqKg1FHP/AJy4thDPklK+7LuMsxtEN4uH4wyw="
+
+
 matrix:
   include:
 
@@ -84,3 +89,24 @@ matrix:
         - ./configure --enable-openssl
         - make
         - make runtest-valgrind
+
+    # coverity scan
+    - os: linux
+      env:
+        - TEST="Coverity Scan"
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - gcc-6
+      coverity_scan:
+        project:
+          name: "pabuhler/libsrtp"
+          description: "Build submitted via Travis CI"
+          notification_email: pabuhler@cisco.com
+          build_command_prepend: "./configure"
+          build_command: "make"
+          branch_pattern: master
+      script:
+        - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-

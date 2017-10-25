@@ -100,6 +100,7 @@ matrix:
             name: "pabuhler/libsrtp"
             description: "Build submitted via Travis CI"
             notification_email: pabuhler@cisco.com
+            version: 2.2
           build_command_prepend: "./configure"
           build_command: "make"
           branch_pattern: coverity-scan

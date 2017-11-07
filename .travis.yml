@@ -4,8 +4,7 @@ language: c
 
 env:
   global:
-    - secure: "a0t9fiRiYsKJE3ZKPGXYtTvgHMNlClUhB5DCYg+eKzvBBtIY674GwigKMTu0uxyJKSwKxxe//hE2jS/JHyA2WJrzqBYIyMtwZJxcWNJX51zv5XQH3y1bcCh7nlNE1nZyAzSQkMk5H4FOvkEkK+V7mWcL/PnS4rqdU20hWS6ZcNjixNCK6HjAakAlVn3N0+GOn8vvDAUqgl6nmApRWqrCJo4jsgmrQufDolEclmgzR+1SLwOVWRAdNuvD5Ylre9Jox4SMr0840JTKE84jBCSVvsdIqQYIMYyvxmZLb5EQAycbhP/h5BE/cmeaK11zgeGo8oIylbNrjG10OcoXL2Bd972ppdH/EvsxHOLGrX7KfMj32Lz3WCqZw6H+cfkNtvfJgXSfuYqX9qEqiLjYMiQAEn6Q34hbhmXO125dKsY1Qp7AaAN2azDJ6+P+GDC3OSITtCyGQtxFQxrRRxYPbYUNAmnNQyctMjHCk8gfRrxZOvSVzMVhud9hFhGbNLYFfEfm7OH5RVuGusgszKg5omcRdFWWqjEkPU+9+VoB+E1bQV8jvD7/midIFhvLmwiBBsgvuJaz0HE7EuvOPApOneYSwv/tglJCk3Q4yNBKuoJSdpQbwweTIHM3J0iWoi8mQOdw4QvGT/QsktneGkAHSbj6WbFoxafDZgdMznCy2JYHGwQ="
-
+    - secure: "KX0Tie0uLiPb2WOin7S7hN2QkVontezGKrP0xqEJ4YsH1IRBniqzhJh+XmxkhErzK5cEpkvR9HaE/PUxE6I2gf3GqgSmVJ9I/y9NcJOzxQcFuJNDagDrbFTBWkOi2SB+ommpLlRX53ruIie/4dHyYcB1RD1YuSAOgslxvr6Svgg="
 
 matrix:
   include:
@@ -97,12 +96,12 @@ matrix:
       addons:
         coverity_scan:
           project:
-            name: "pabuhler/libsrtp"
+            name: "cisco-libSRTP"
             description: "Build submitted via Travis CI"
             notification_email: pabuhler@cisco.com
-            version: 2.2
+            version: 2
           build_command_prepend: "./configure"
           build_command: "make"
-          branch_pattern: coverity-scan
+          branch_pattern: coverity-scan-2
       script:
         - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-

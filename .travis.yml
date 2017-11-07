@@ -4,7 +4,7 @@ language: c
 
 env:
   global:
-    - secure: "eAJHhXLVw3zszahQgPj0WYFEdN1OZyVEZb9rSlLaZkBh8HcgBHtcV9BGkVeoyOZve940B+pSAq1+t/Jfc6sVKmsSPoAw3ZU9JZptV8NoUCn69xBkIpsJ9onl0pineiRgStxZNCLbdO90L4FmNW7fxKalgJreDiyiFwa3OjSjN4E="
+    - secure: 'eAJHhXLVw3zszahQgPj0WYFEdN1OZyVEZb9rSlLaZkBh8HcgBHtcV9BGkVeoyOZve940B+pSAq1+t/Jfc6sVKmsSPoAw3ZU9JZptV8NoUCn69xBkIpsJ9onl0pineiRgStxZNCLbdO90L4FmNW7fxKalgJreDiyiFwa3OjSjN4E='
 
 matrix:
   include:

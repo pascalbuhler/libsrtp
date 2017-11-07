@@ -7,6 +7,8 @@ env:
     - secure: "DlGKUj4+bSLXtULE7FGhJ94JxFZ0iqFftDgt/X8OIt7EHGTItHa1araoY5hqLMQmjHfL5wfCpzy4RqwfNofrT0lPLLY2JD2itFq2TgHoVCdq2PB+gbJswtu116zhPmd28Ks8F0LJ2pNI2kwmAdRNLTXK0WAFIiXktWUtUm1/EP4="
     - secure: "T+KagRU9BRaZpYNRiw6DCYWp3smLZuk5s43wMZvXl6WrnOaAeoh/2zaML/mJ2++MIahw3wINqwGx92rdKFrGn/iRgskDgQXqyP5ksTN6T/tUKwYwp2MD5Ses3Sqe4gLymYHtPxNdipogSSS6TAGcnDF7L0i8kMqZtiapmwP84rw="
     - secure: "J+39Z6pwSRqVGTC4ynOknZV4FNk/VsVSaXM2jzhbUkT/znwC9Iy9pwEYNMCCwsF3N6rVDKExQaeT4ykvGQLSS8cAytIm38Zo9g2bxZtUyxIk68y8cI50Awy9bPtcu5cYpLh2lOdOxwrRHqXHhbOPj1xPglQfy5NWWJkip253E5k="
+    - secure: "FKZ+38pRLIABXxizkVCn4WPf29e2gfZ+OyGjcnxDoGHF+uxg8ElqNFweq8Ieq5c3haz7lYwhAf6q/U+X0XZbe268PCRn+NCXJhA01I6PSAWWdgJrIlxeO62AOVjiC1JAqILx7OwFAQ/sS32Hz2G6fdxkAZIgZLetlqWJX4aXIfQ="
+    - secure: "M3pWQeqrz8x6Cg1ibXY+tHRIIe+tGe4uByWKG6NfoXz6ngPTFLmEwRY6mtJnTD0Kfy2LDdrLqEfaAmnOIxPpUlSXaAclOdoAxMKs3SLlZE4XEs2lLTttVLc7xXF7wBMBtxEgZraChWyRIHPXy9TDah96aq0NTxuPi5BHdLWruGQ="
 
 matrix:
   include:

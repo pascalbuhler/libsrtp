@@ -99,7 +99,7 @@ matrix:
         - echo 'deb http://www.emdebian.org/debian wheezy main' | sudo tee /etc/apt/sources.list.d/emdebian.list > /dev/null
         - echo 'deb http://ftp.us.debian.org/debian wheezy main' | sudo tee -a /etc/apt/sources.list.d/emdebian.list > /dev/null
         - sudo apt-get update
-        - sudo apt-get install linux-libc-dev-mips-cross libc6-mips-cross libc6-dev-mips-cross binutils-mips-linux-gnu gcc-4.4-mips-linux-gnu g++-4.4-mips-linux-gnu -y
+        - sudo apt-get install linux-libc-dev-mips-cross libc6-mips-cross libc6-dev-mips-cross binutils-mips-linux-gnu gcc-4.4-mips-linux-gnu -y
       script:
         - mips-linux-gnu-gcc -dumpmachine
         - export CC=mips-linux-gnu-gcc

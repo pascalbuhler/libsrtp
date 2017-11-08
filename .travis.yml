@@ -94,10 +94,10 @@ matrix:
         apt:
           packages:
             - qemu-user-static
-      before_script:
-        - sudo echo "deb http://www.emdebian.org/debian/ squeeze main" > /etc/apt/sources.list.d/emdebian.list
-        - sudo echo "deb http://ftp.us.debian.org/debian/ squeeze main" >> /etc/apt/sources.list.d/emdebian.list
-        - sudo apt-get install debian-archive-keyring emdebian-archive-keyring
+      before_install:
+        - sudo apt-get install emdebian-archive-keyring
+        - echo 'deb http://www.emdebian.org/debian wheezy main' | sudo tee /etc/apt/sources.list.d/emdebian.list > /dev/null
+        - sudo apt-get update
       script:
         - ./configure
         - make

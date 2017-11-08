@@ -93,8 +93,8 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - sourceline 'deb http://ftp.de.debian.org/debian/ squeeze main'
-            - sourceline 'deb http://www.emdebian.org/debian/ squeeze main'
+            - sourceline 'deb http://ftp.de.debian.org/debian squeeze main'
+            - sourceline deb http://www.emdebian.org/debian squeeze main
           packages:
             - gcc-6
             - qemu-user-static

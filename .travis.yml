@@ -98,8 +98,8 @@ matrix:
           project:
             name: "cisco-libSRTP"
             description: "Build submitted via Travis CI"
-            notification_email: pabuhler@cisco.com
             version: 2
+          notification_email: pabuhler@cisco.com
           build_command_prepend: "./configure"
           build_command: "make"
           branch_pattern: coverity-scan-2

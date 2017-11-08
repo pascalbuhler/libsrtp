@@ -84,3 +84,18 @@ matrix:
         - ./configure --enable-openssl
         - make
         - make runtest-valgrind
+
+    # big-endian
+    - os: linux
+      env:
+        - TEST="big-endian"
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - gcc-6
+      script:
+        - ./configure
+        - make
+        - file test/srtp_driver

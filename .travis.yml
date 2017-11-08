@@ -93,10 +93,20 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
+            - http://ftp.de.debian.org/debian squeeze main
+            - http://www.emdebian.org/debian/ squeeze main
           packages:
             - gcc-6
             - qemu-user-static
+            - emdebian-archive-keyring
+            - linux-libc-dev-mips-cross
+            - libc6-mips-cross
+            - libc6-dev-mips-cross
+            - binutils-mips-linux-gnu
+            - gcc-4.4-mips-linux-gnu
+            - g++-4.4-mips-linux-gnu
       script:
         - ./configure
         - make
         - file test/srtp_driver
+        - mips-linux-gnu-gcc -dumpmachine

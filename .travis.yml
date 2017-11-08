@@ -95,13 +95,14 @@ matrix:
           packages:
             - qemu-user-static
       before_install:
-        - sudo apt-get install emdebian-archive-keyring
+        - sudo apt-get install emdebian-archive-keyring debian-archive-keyring
         - echo 'deb http://www.emdebian.org/debian wheezy main' | sudo tee /etc/apt/sources.list.d/emdebian.list > /dev/null
+        - echo 'deb http://ftp.us.debian.org/debian wheezy main' | sudo tee /etc/apt/sources.list.d/emdebian.list > /dev/null
         - sudo apt-get update
-      install:
-        - sudo apt-get install gcc-4.4-mips-linux-gnu -y -f
+        - sudo apt-get install gcc-4.4-mips-linux-gnu -y
       script:
+        - mips-linux-gnu-gcc -dumpmachine
+        - export CC=mips-linux-gnu-gcc
         - ./configure
         - make
         - file test/srtp_driver
-        - mips-linux-gnu-gcc -dumpmachine

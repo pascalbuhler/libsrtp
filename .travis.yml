@@ -87,24 +87,18 @@ matrix:
 
     # big-endian
     - os: linux
+      sudo: true
       env:
         - TEST="big-endian"
       addons:
         apt:
-          sources:
-            - ubuntu-toolchain-r-test
-            - sourceline 'deb http://ftp.de.debian.org/debian squeeze main'
-            - sourceline deb http://www.emdebian.org/debian squeeze main
           packages:
-            - gcc-6
             - qemu-user-static
-            - emdebian-archive-keyring
-            - linux-libc-dev-mips-cross
-            - libc6-mips-cross
-            - libc6-dev-mips-cross
-            - binutils-mips-linux-gnu
-            - gcc-4.4-mips-linux-gnu
-            - g++-4.4-mips-linux-gnu
+      before_script:
+        - echo "deb http://ftp.de.debian.org/debian squeeze main" | sudo tee -a /etc/apt/sources.list
+        - echo "deb http://www.emdebian.org/debian squeeze main" | sudo tee -a /etc/apt/sources.list
+        - sudo apt-get update -qq
+        - sudo apt-get install emdebian-archive-keyring linux-libc-dev-mips-cross libc6-mips-cross libc6-dev-mips-cross binutils-mips-linux-gnu gcc-4.4-mips-linux-gnu g++-4.4-mips-linux-gnu -y
       script:
         - ./configure
         - make

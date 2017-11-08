@@ -99,7 +99,7 @@ matrix:
         - echo 'deb http://www.emdebian.org/debian wheezy main' | sudo tee /etc/apt/sources.list.d/emdebian.list > /dev/null
         - sudo apt-get update
       install:
-        - sudo apt-get install gcc-4.4-mips-linux-gnu
+        - sudo apt-get install gcc-4.4-mips-linux-gnu -y -f
       script:
         - ./configure
         - make

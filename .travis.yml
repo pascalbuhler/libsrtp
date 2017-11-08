@@ -95,6 +95,7 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - gcc-6
+            - qemu-user-static
       script:
         - ./configure
         - make

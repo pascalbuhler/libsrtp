@@ -106,4 +106,6 @@ matrix:
         - sudo docker exec --tty mipsX bash -c 'CC=mips-linux-gnu-gcc ./configure --host=x86_64-linux-gnu'
         - sudo docker exec --tty mipsX make
         - file test/srtp_driver
-        - test/srtp_driver
+        - qemu-mips -L /usr/mips-linux-gnu test/srtp_driver
+        - file test/test_srtp
+        - test/test_srtp

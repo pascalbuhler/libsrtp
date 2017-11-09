@@ -90,19 +90,15 @@ matrix:
       sudo: true
       env:
         - TEST="big-endian"
+      services:
+        - docker
       addons:
         apt:
           packages:
             - qemu-user-static
       before_install:
-        - sudo apt-get install emdebian-archive-keyring debian-archive-keyring
-        - echo 'deb http://www.emdebian.org/debian wheezy stable' | sudo tee /etc/apt/sources.list.d/emdebian.list > /dev/null
-        - echo 'deb http://ftp.us.debian.org/debian wheezy stable' | sudo tee -a /etc/apt/sources.list.d/emdebian.list > /dev/null
-        - sudo apt-get update
-        - sudo apt-get -f install linux-libc-dev-mips-cross libc6-mips-cross libc6-dev-mips-cross binutils-mips-linux-gnu gcc-4.4-mips-linux-gnu cpp-4.4-mips-linux-gnu libgomp1-mips-cross gcc-4.8-base-mips-cross -y
+        - sudo docker run --rm dockcross/linux-mips > ./mips
+        - chmod +x ./mips
+        - sudo ./mips bash -c '$CC -v'
       script:
-        - mips-linux-gnu-gcc -dumpmachine
-        - export CC=mips-linux-gnu-gcc
-        - ./configure
-        - make
         - file test/srtp_driver

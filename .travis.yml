@@ -104,4 +104,6 @@ matrix:
         - ./mips bash -c 'EXTRA_CFLAGS=-static ./configure --host=x86_64-linux-gnu'
         - ./mips bash -c 'make'
         - file test/srtp_driver
+        - uname -a
+        - ./mips bash -c 'uname -a'
         - test/srtp_driver

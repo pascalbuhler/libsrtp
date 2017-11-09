@@ -99,6 +99,8 @@ matrix:
       before_install:
         - sudo docker run --rm dockcross/linux-mips > ./mips
         - chmod +x ./mips
-        - sudo ./mips bash -c '$CC -v'
+        - ./mips bash -c '$CC -v'
       script:
+        - ./mips bash -c 'EXTRA_CFLAGS=-static ./configure --host=x86_64-linux-gnu'
+        - ./mips bash -c '$CC -v'
         - file test/srtp_driver

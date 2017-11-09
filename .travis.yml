@@ -106,7 +106,6 @@ matrix:
         - sudo docker exec --tty mipsX bash -c 'EXTRA_CFLAGS=-static CC=mips-linux-gnu-gcc ./configure --host=x86_64-linux-gnu'
         - sudo docker exec --tty mipsX make
         - file test/srtp_driver
-        - ls /usr
         - test/srtp_driver
-        - file test/test_srtp
+        - file test/test_srtp -v
         - test/test_srtp

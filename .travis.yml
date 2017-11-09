@@ -102,5 +102,6 @@ matrix:
         - ./mips bash -c '$CC -v'
       script:
         - ./mips bash -c 'EXTRA_CFLAGS=-static ./configure --host=x86_64-linux-gnu'
-        - ./mips bash -c '$CC -v'
+        - ./mips bash -c 'make'
         - file test/srtp_driver
+        - test/srtp_driver

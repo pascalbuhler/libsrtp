@@ -95,7 +95,7 @@ matrix:
       addons:
         apt:
           packages:
-            - qemu-user
+            - qemu-user-static
             - qemu-system-mips
       before_install:
         - sudo docker run --volume $(pwd):/src --workdir /src --name mipsX --tty --detach ubuntu:16.04 tail
@@ -103,11 +103,10 @@ matrix:
         - sudo docker exec --tty mipsX apt-get install build-essential -y
         - sudo docker exec --tty mipsX apt-get install gcc-mips-linux-gnu -y
       script:
-        - sudo docker exec --tty mipsX bash -c 'CC=mips-linux-gnu-gcc ./configure --host=x86_64-linux-gnu'
+        - sudo docker exec --tty mipsX bash -c 'EXTRA_CFLAGS=-static CC=mips-linux-gnu-gcc ./configure --host=x86_64-linux-gnu'
         - sudo docker exec --tty mipsX make
         - file test/srtp_driver
-        - which qemu-mips
         - ls /usr
-        - qemu-mips -L /usr/mips-linux-gnu test/srtp_driver
+        - test/srtp_driver
         - file test/test_srtp
         - test/test_srtp

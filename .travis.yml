@@ -95,15 +95,15 @@ matrix:
       addons:
         apt:
           packages:
-            - qemu-user-static
+            - qemu-user
+            - qemu-system-mips
       before_install:
-        - sudo docker run --rm dockcross/linux-mips > ./mips
-        - chmod +x ./mips
-        - ./mips bash -c '$CC -v'
+        - sudo docker run --volume $(pwd):/src --workdir /src --name mipsX --tty --detach ubuntu:16.04 tail
+        - sudo docker exec --tty mipsX apt-get update
+        - sudo docker exec --tty mipsX apt-get install build-essential -y
+        - sudo docker exec --tty mipsX apt-get install gcc-mips-linux-gnu -y
       script:
-        - ./mips bash -c 'EXTRA_CFLAGS=-static ./configure --host=x86_64-linux-gnu'
-        - ./mips bash -c 'make'
+        - sudo docker exec --tty mipsX bash -c 'CC=mips-linux-gnu-gcc ./configure --host=x86_64-linux-gnu'
+        - sudo docker exec --tty mipsX make
         - file test/srtp_driver
-        - uname -a
-        - ./mips bash -c 'uname -a'
         - test/srtp_driver

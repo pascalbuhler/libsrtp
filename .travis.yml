@@ -111,9 +111,6 @@ matrix:
         - sudo docker exec --tty mipsX make
         - sudo docker kill mipsX
         - file test/srtp_driver
-        - test/srtp_driver -v
-        - file test/test_srtp
-        - test/test_srtp
         - make runtest
 
     # coverity scan
